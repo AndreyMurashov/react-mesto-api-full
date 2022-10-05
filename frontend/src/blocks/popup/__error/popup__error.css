@@ -1,0 +1,20 @@
+.popup__error {
+    visibility: hidden;
+    display: block;
+    color: red;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    width: 358px;
+    height: 22px;
+    margin: 5px auto;
+}
+
+@media screen and (max-width: 515px) {
+    .popup__error {
+        width: 238px;
+        height: 22px;
+    }
+}

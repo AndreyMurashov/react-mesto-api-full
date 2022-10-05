@@ -1,0 +1,7 @@
+.components__form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1px;
+    margin: 0;
+}

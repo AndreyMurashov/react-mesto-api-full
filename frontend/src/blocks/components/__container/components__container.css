@@ -1,0 +1,6 @@
+.components__form {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    margin: auto; 
+}

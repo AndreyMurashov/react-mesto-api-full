@@ -1,0 +1,15 @@
+.element__thrash {
+    width: 18px;
+    height: 19px;
+    border: 0;
+    background: url('../../../images/thrash-cap.svg') top center / 18px 4.42px no-repeat, url('../../../images/thrash.svg') bottom center / 15.44px 13.3px no-repeat;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    transition: opacity .5s;
+}
+
+.element__thrash:hover {
+    opacity: .6;
+}
