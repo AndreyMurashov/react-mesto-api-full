@@ -35,7 +35,7 @@ app.post('/signin', celebrate({
     password: Joi.string().required(),
   }),
 }), login);
-//app.use(auth);
+app.use(auth);
 app.use(userRouter);
 app.use(cardRouter);
 app.all('*', absentisPage);
