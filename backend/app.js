@@ -10,7 +10,7 @@ const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./midlewares/logger');
 
 const app = express();
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const absentisPage = (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
