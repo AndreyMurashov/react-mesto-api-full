@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = 'api.murashov.students.nomoredomains.icu';
 
 const parseResponse = (res) => {
     if (res.ok) {
