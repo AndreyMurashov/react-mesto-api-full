@@ -7,6 +7,7 @@ const { login, createUser } = require('./controllers/users');
 const cardRouter = require('./routes/cards');
 const DefaultError = require('./errors/DefaultError');
 const NotFoundError = require('./errors/NotFoundError');
+const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./midlewares/logger');
 
 const app = express();
@@ -17,6 +18,13 @@ const absentisPage = (req, res, next) => {
 };
 
 app.use(express.json());
+app.use(cors);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(requestLogger);
 
