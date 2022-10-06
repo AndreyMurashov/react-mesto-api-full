@@ -12,7 +12,7 @@ const Main = (props) => {
     <>
       <Header
         authText="Войти"
-        linkTo="/sign-in"
+        linkTo="/signin"
         loggedIn={props.loggedIn}
         handleLogout={props.handleLogout}
         uEmail={props.uEmail}

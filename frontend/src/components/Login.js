@@ -25,7 +25,7 @@ const Login = (props) => {
 
   return (
     <>
-      <Header authText="Регистрация" linkTo="/sign-up" />
+      <Header authText="Регистрация" linkTo="/signup" />
       <div className="components">
         <div className="components__container">
           <h2 className="components__title">Вход</h2>

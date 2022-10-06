@@ -24,7 +24,7 @@ export const Register = (props) => {
   };
   return (
     <>
-      <Header authText="Войти" linkTo="/sign-in" 
+      <Header authText="Войти" linkTo="/signin" 
       />
       <div className="components">
         <div className="components__container">
@@ -54,7 +54,7 @@ export const Register = (props) => {
           </form>
           <p className="components__text">
             Уже зарегистрированы?{" "}
-            <NavLink className="components__text" to="/sign-in">
+            <NavLink className="components__text" to="/signin">
               Войти
             </NavLink>
           </p>

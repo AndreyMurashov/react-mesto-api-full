@@ -139,7 +139,7 @@ const App = () => {
         setPopupTitle("Вы успешно зарегистрировались!");
         setRegPopupOpen(true);
         setTimeout(() => setRegPopupOpen(false), 3000);
-        history.push("/sign-in");
+        history.push("/signin");
       })
       .catch((err) => {
         if (err.status === "400") {
@@ -198,7 +198,7 @@ const App = () => {
     localStorage.removeItem("token");
     setUEmail("");
     setLoggedIn(false);
-    history.push("/sign-in");
+    history.push("/signin");
   };
 
   useEffect(() => {
@@ -225,11 +225,11 @@ const App = () => {
             handleLogout={handleLogout}
           />
 
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Register handleRegister={handleRegister} />
           </Route>
 
-          <Route path="/sign-in">
+          <Route path="/signin">
             <Login handleLogin={handleLogin} checkToken={checkToken} />
           </Route>
         </Switch>

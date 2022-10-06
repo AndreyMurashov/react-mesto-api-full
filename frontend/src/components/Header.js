@@ -13,7 +13,7 @@ const Header = (props) => {
           {props.uEmail}{" "}
           <NavLink
             className="header__auth header__auth_out"
-            to="/sign-in"
+            to="/signin"
             onClick={props.handleLogout}
           >
             Выйти
