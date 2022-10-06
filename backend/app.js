@@ -7,7 +7,7 @@ const { login, createUser } = require('./controllers/users');
 const cardRouter = require('./routes/cards');
 const DefaultError = require('./errors/DefaultError');
 const NotFoundError = require('./errors/NotFoundError');
-const cors = require('./middlewares/cors');
+const cors = require('./midlewares/cors');
 const { requestLogger, errorLogger } = require('./midlewares/logger');
 
 const app = express();
