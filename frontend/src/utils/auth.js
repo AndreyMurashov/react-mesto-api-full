@@ -1,4 +1,4 @@
-export const BASE_URL = 'api.murashov.students.nomoredomains.icu';
+export const BASE_URL = 'https://api.murashov.students.nomoredomains.icu';
 
 const parseResponse = (res) => {
     if (res.ok) {
