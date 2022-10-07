@@ -11,24 +11,16 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  _getHeaders() {
-    const token = localStorage.getItem('token');
-    return {
-      'Authorization': `Bearer ${token}`,
-      ...this._headers,
-    };
-  }
-
-  getUserInfo() {
+   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._getHeaders(),
+      headers: this._headers,
     }).then((res) => this._parseResponse(res));
   }
 
   redUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._getHeaders(),
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -39,7 +31,7 @@ class Api {
   redAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._getHeaders(),
+      headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatarURL,
       }),
@@ -48,14 +40,14 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._getHeaders(),
+      headers: this._headers,
     }).then((res) => this._parseResponse(res));
   }
 
   addCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._getHeaders(),
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -66,21 +58,21 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: `${!isLiked ? 'DELETE' : 'PUT'}`,
-      headers: this._getHeaders(),
+      headers: this._headers,
     }).then((res) => this._parseResponse(res));
   }
 
   removeLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
-      headers: this._getHeaders(),
+      headers: this._headers,
     }).then((res) => this._parseResponse(res));
   }
 
   removeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._getHeaders(),
+      headers: this._headers,
     }).then((res) => this._parseResponse(res));
   }
 }
@@ -88,6 +80,7 @@ class Api {
 const api = new Api({
   baseUrl: "https://api.murashov.students.nomoredomains.icu",
   headers: {
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
     "Content-Type": "application/json",
   },
 });
