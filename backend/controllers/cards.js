@@ -23,9 +23,7 @@ module.exports.createCard = async (req, res, next) => {
     const data = await Card.create({ name, link, owner });
     const { likes, _id, createdAt } = data;
 
-    res.status(200).json({
-      likes, _id, name, link, owner, createdAt,
-    });
+    res.status(200).json(data);
   } catch (e) {
     if (e.name === 'ValidationError') {
       next(new BadRequestError('Переданы некорректные данные при создании карточки'));
@@ -80,7 +78,7 @@ module.exports.likeCard = async (req, res, next) => {
           likes, _id, name, link, createdAt,
         } = data;
       res.status(200).json({
-        likes, _id, name, link, owner, createdAt,
+        data, owner,
       });
     }
   } catch (err) {
@@ -108,7 +106,7 @@ module.exports.dislikeCard = async (req, res, next) => {
         likes, _id, name, link, createdAt,
       } = data;
       res.status(200).json({
-        likes, _id, name, link, owner, createdAt,
+        data, owner,
       });
     }
   } catch (err) {

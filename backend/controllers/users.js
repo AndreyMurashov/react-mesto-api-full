@@ -97,8 +97,8 @@ const updateUser = async (req, res, next) => {
       name,
       about,
     }, { new: true, runValidators: true }).orFail(() => new NotFoundError('Пользователь с указанным id не существует'))
-      .then(() => {
-        res.status(200).send({ name, about });
+      .then((user) => {
+        res.status(200).send(user);
       });
   } catch (err) {
     if (err.name === 'CastError' || err.name === 'ValidationError') {
@@ -117,8 +117,8 @@ const updateAvatar = async (req, res, next) => {
       avatar,
     }, { new: true, runValidators: true })
       .orFail(() => new NotFoundError('Пользователь с указанным id не существует'))
-      .then(() => {
-        res.status(200).json({ avatar });
+      .then((user) => {
+        res.status(200).json(user);
       });
   } catch (err) {
     if (err.name === 'CastError' || err.name === 'ValidationError') {
