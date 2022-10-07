@@ -3,7 +3,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 
 const Card = (props) => {
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = props.card.owner._id === currentUser._id;
+  const isOwn = props.card.owner === currentUser._id;
   const cardDeleteButtonClassName = "element__thrash";
   const isLiked = props.card.likes.some((i) => i._id === currentUser._id);
   const cardLikeButtonClassName = `element__like ${
