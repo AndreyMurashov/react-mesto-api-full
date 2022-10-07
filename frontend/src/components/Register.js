@@ -19,7 +19,6 @@ export const Register = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const { email, password } = data;
-    console.log({ email, password });
     props.handleRegister(email, password);
   };
   return (
