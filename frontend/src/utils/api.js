@@ -78,7 +78,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.murashov.students.nomoredomains.icu",
+  baseUrl: "api.murashov.students.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json",
   },
