@@ -185,7 +185,7 @@ const App = () => {
         .getContent(token)
         .then((res) => {
           if (res) {
-            setUEmail(res.data.email);
+            setUEmail(res.email);
             setLoggedIn(true);
             history.push("/");
           }
