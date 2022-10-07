@@ -77,9 +77,7 @@ module.exports.likeCard = async (req, res, next) => {
         {
           likes, _id, name, link, createdAt,
         } = data;
-      res.status(200).json({
-        data, owner,
-      });
+      res.status(200).json(data);
     }
   } catch (err) {
     if (err.name === 'CastError') {
@@ -105,9 +103,7 @@ module.exports.dislikeCard = async (req, res, next) => {
       const {
         likes, _id, name, link, createdAt,
       } = data;
-      res.status(200).json({
-        data, owner,
-      });
+      res.status(200).json(data);
     }
   } catch (err) {
     console.log(err.name);
