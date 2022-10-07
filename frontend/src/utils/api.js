@@ -12,9 +12,9 @@ class Api {
   }
 
   _getHeaders() {
-    const jwt = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     return {
-      'Authorization': `Bearer ${jwt}`,
+      'Authorization': `Bearer ${token}`,
       ...this._headers,
     };
   }
@@ -86,7 +86,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://api.murashov.students.nomoredomains.icu",
+  baseUrl: "https://api.murashov.students.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json",
   },
