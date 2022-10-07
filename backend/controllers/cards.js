@@ -5,15 +5,16 @@ const ForbiddenError = require('../errors/ForbiddenError');
 const BadRequestError = require('../errors/BadRequestError');
 
 // возвращает все карточки
-module.exports.getCards = async (req, res, next) => {
-  try {
-    const data = await Card.find({});
-    const { createdAt, likes, link, name, _id } = data;
-    const owner = req.user._id;
-    res.status(200).json({ createdAt, likes, link, name, owner, _id });
-  } catch (err) {
+module.exports.getCards = (req, res, next) => {
+    Card.find({})
+    .then((cards) => {
+    //       const { createdAt, likes, link, name, _id } = cards;
+    // const owner = req.user._id;
+    res.status(200).json(cards);
+    })
+  .catch((err) => {
     next(new DefaultError('На сервере произошла ошибка'));
-  }
+  });
 };
 
 // создаёт карточку
