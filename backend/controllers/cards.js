@@ -9,7 +9,8 @@ module.exports.getCards = async (req, res, next) => {
   try {
     const data = await Card.find({});
     const { likes, _id, name, link } = data;
-    res.status(200).json(data);
+    const owner = req.user._id;
+    res.status(200).json(data, owner);
   } catch (err) {
     next(new DefaultError('На сервере произошла ошибка'));
   }
