@@ -35,6 +35,7 @@ const App = () => {
         .then(([userData, initialCards]) => {
           setCurrentUser(userData);
           setCards(initialCards);
+          history.push("/");
         })
         .catch((err) => {
           console.log(`Ошибка: ${err}`);
