@@ -190,8 +190,10 @@ const App = () => {
           if (res) {
             setUEmail(res.email);
             setLoggedIn(true);
-            history.push("/");
           }
+        })
+        .then(() => {
+          history.push("/");
         })
         .catch((err) => console.log(err));
     }
