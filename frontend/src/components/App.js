@@ -186,8 +186,8 @@ const App = () => {
         .then((res) => {
           if (res) {
             setUEmail(res.email);
-            setLoggedIn(true);
-            history.push("/");
+         //   setLoggedIn(true);
+         //   history.push("/");
           }
         })
         .catch((err) => console.log(err));

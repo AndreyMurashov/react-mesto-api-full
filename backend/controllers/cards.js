@@ -6,15 +6,15 @@ const BadRequestError = require('../errors/BadRequestError');
 
 // возвращает все карточки
 module.exports.getCards = (req, res, next) => {
-    Card.find({})
+  Card.find({})
     .then((cards) => {
     //       const { createdAt, likes, link, name, _id } = cards;
     // const owner = req.user._id;
-    res.status(200).json(cards);
+      res.status(200).json(cards);
     })
-  .catch((err) => {
-    next(new DefaultError('На сервере произошла ошибка'));
-  });
+    .catch((err) => {
+      next(new DefaultError('На сервере произошла ошибка'));
+    });
 };
 
 // создаёт карточку
