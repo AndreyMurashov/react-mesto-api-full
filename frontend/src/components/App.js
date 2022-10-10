@@ -32,7 +32,7 @@ const App = () => {
 
   useEffect(() => {
     checkToken();
-  }, []);
+  }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
