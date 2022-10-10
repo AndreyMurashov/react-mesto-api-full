@@ -29,15 +29,17 @@ const App = () => {
   const [popupImage, setPopupImage] = useState("");
   const [popupTitle, setPopupTitle] = useState("");
 
+
+  useEffect(() => {
+    checkToken();
+  }, []);
+
   useEffect(() => {
     if (loggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, initialCards]) => {
           setCurrentUser(userData);
           setCards(initialCards);
-        })
-        .then(() => {
-          history.push("/");
         })
         .catch((err) => {
           console.log(`Ошибка: ${err}`);
@@ -161,8 +163,8 @@ const App = () => {
       .then((res) => {
         if (res.token) {
           localStorage.setItem("token", res.token);
-          setLoggedIn(true);
           setUEmail(email);
+          setLoggedIn(true);
           checkToken();
           history.push("/");
         }
@@ -205,10 +207,6 @@ const App = () => {
     setLoggedIn(false);
     history.push("/signin");
   };
-
-  useEffect(() => {
-    checkToken();
-  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

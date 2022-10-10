@@ -80,7 +80,7 @@ class Api {
 const api = new Api({
   baseUrl: "https://api.murashov.students.nomoredomains.icu",
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
+    authorization: `Bearer ${localStorage.getItem('token')}`,
     "Content-Type": "application/json",
   },
 });
