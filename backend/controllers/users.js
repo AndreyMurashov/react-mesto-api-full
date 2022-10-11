@@ -135,14 +135,9 @@ const login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       console.log(user);
-      const token = jwt.sign({ _id: user._id }, `${NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key'}`, { expiresIn: '7d' });
-      res.send({ token });
-      console.log(token);
-      // res.cookie('jwtToken', token, {
-      //   maxAge: 3600000 * 24 * 7,
-      //   httpOnly: true,
-      // })
-      //   .end();
+      const jwtToken = jwt.sign({ _id: user._id }, `${NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key'}`, { expiresIn: '7d' });
+      res.send({ jwtToken });
+      // console.log(jwtToken);
     })
     .catch((err) => {
       next(new LoginError('Ошибка авторизации'));

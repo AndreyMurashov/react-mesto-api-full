@@ -30,9 +30,9 @@ const App = () => {
   const [popupTitle, setPopupTitle] = useState("");
 
 
-  useEffect(() => {
-    checkToken();
-  }, [loggedIn]);
+  // useEffect(() => {
+  //   checkToken();
+  // }, []);
 
   useEffect(() => {
     if (loggedIn) {
