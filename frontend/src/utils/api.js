@@ -14,7 +14,6 @@ class Api {
    getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-      credentials: 'include',
     }).then((res) => this._parseResponse(res));
   }
 
@@ -22,7 +21,6 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -34,7 +32,6 @@ class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      credentials: 'include',
       body: JSON.stringify({
         avatar: data.avatarURL,
       }),
@@ -44,7 +41,6 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-      credentials: 'include',
     }).then((res) => this._parseResponse(res));
   }
 
@@ -52,7 +48,6 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
-      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -64,7 +59,6 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: `${!isLiked ? 'DELETE' : 'PUT'}`,
       headers: this._headers,
-      credentials: 'include',
     }).then((res) => this._parseResponse(res));
   }
 
@@ -72,7 +66,6 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
-      credentials: 'include',
     }).then((res) => this._parseResponse(res));
   }
 
@@ -80,7 +73,6 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-      credentials: 'include',
     }).then((res) => this._parseResponse(res));
   }
 }
@@ -88,7 +80,7 @@ class Api {
 const api = new Api({
   baseUrl: "https://api.murashov.students.nomoredomains.icu",
   headers: {
-    authorization: `Bearer ${localStorage.getItem('token')}`,
+    authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
     "Content-Type": "application/json",
     "Accept": "application/json",
   },
