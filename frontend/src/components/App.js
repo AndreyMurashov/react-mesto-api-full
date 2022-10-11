@@ -30,9 +30,9 @@ const App = () => {
   const [popupTitle, setPopupTitle] = useState("");
 
 
-  // useEffect(() => {
-  //   checkToken();
-  // }, []);
+  useEffect(() => {
+    checkToken();
+  }, []);
 
   useEffect(() => {
     if (loggedIn) {
@@ -162,7 +162,7 @@ const App = () => {
       .login(email, password)
       .then((res) => {
         if (res.token) {
-          localStorage.setItem("token", res.token);
+          localStorage.setItem("jwtToken", res.token);
           setUEmail(email);
           setLoggedIn(true);
           checkToken();
@@ -184,7 +184,7 @@ const App = () => {
   };
 
   const checkToken = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("jwtToken");
     if (token) {
       auth
         .getContent(token)
@@ -202,7 +202,7 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("jwtToken");
     setUEmail("");
     setLoggedIn(false);
     history.push("/signin");
