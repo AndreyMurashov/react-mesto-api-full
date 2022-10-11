@@ -166,7 +166,7 @@ const App = () => {
           setUEmail(email);
           setLoggedIn(true);
           checkToken();
-          history.push("/");
+          window.location.reload();
         }
       })
       .catch((err) => {
