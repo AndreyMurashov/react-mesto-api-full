@@ -4,8 +4,8 @@ const LoginError = require('../errors/LoginError');
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
-  // const { authorization } = req.headers;
-  const authorization = req.cookies.jwtToken;
+  const { authorization } = req.headers;
+  // const authorization = req.cookies.jwtToken;
   console.log(authorization);
   if (!authorization || !authorization.startsWith('Bearer')) {
     return next(new LoginError('Необходима авторизация'));
