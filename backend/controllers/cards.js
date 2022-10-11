@@ -8,8 +8,6 @@ const BadRequestError = require('../errors/BadRequestError');
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .then((cards) => {
-    //       const { createdAt, likes, link, name, _id } = cards;
-    // const owner = req.user._id;
       res.status(200).json(cards);
     })
     .catch((err) => {
@@ -23,8 +21,6 @@ module.exports.createCard = async (req, res, next) => {
     const { name, link } = req.body;
     const owner = req.user._id;
     const data = await Card.create({ name, link, owner });
-    const { likes, _id, createdAt } = data;
-
     res.status(200).json(data);
   } catch (e) {
     if (e.name === 'ValidationError') {
@@ -75,10 +71,6 @@ module.exports.likeCard = async (req, res, next) => {
       next(new NotFoundError('Передан несуществующий _id карточки'));
     } else {
       const owner = req.user._id;
-      const
-        {
-          likes, _id, name, link, createdAt,
-        } = data;
       res.status(200).json(data);
     }
   } catch (err) {
@@ -102,9 +94,6 @@ module.exports.dislikeCard = async (req, res, next) => {
       next(new NotFoundError('Передан несуществующий _id карточки'));
     } else {
       const owner = req.user._id;
-      const {
-        likes, _id, name, link, createdAt,
-      } = data;
       res.status(200).json(data);
     }
   } catch (err) {
