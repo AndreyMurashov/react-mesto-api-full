@@ -31,10 +31,10 @@ export const login = (email, password) => {
         .then(parseResponse)
 };
 
-export const getContent = (jwtToken) => {
+export const getContent = (token) => {
     return fetch (`${BASE_URL}/users/me`, {
             headers: {
-                authorization: `Bearer ${jwtToken}`,
+                authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
         })

@@ -162,7 +162,7 @@ const App = () => {
       .login(email, password)
       .then((res) => {
         if (res.token) {
-          localStorage.setItem("jwtToken", res.token);
+          localStorage.setItem("token", res.token);
           setUEmail(email);
           setLoggedIn(true);
           checkToken();
@@ -184,7 +184,7 @@ const App = () => {
   };
 
   const checkToken = () => {
-    const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem("token");
     if (token) {
       auth
         .getContent(token)
@@ -202,7 +202,7 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("token");
     setUEmail("");
     setLoggedIn(false);
     history.push("/signin");
